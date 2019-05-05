@@ -28,7 +28,7 @@ Before converting our project into a package,
 we will explore what a package should contain.
 
 -   The text file `DESCRIPTION` (with no suffix) holds most of the package's metadata,
-    including a description of what it,
+    including a description of what it does,
     who wrote it,
     and what other packages it requires to run.
     We will edit its contents as we go along.
