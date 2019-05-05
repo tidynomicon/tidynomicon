@@ -599,7 +599,7 @@ setting column names on the fly is perfectly comprehensible.)
 
 Now,
 how might we do this with Pandas?
-On approach is to use a single multi-part `.query` to select data
+One approach is to use a single multi-part `.query` to select data
 and store the result in a variable so that we can refer to the `hi` and `lo` columns twice
 without repeating the filtering expression.
 We then group by year and aggregate, again using strings for column names:
