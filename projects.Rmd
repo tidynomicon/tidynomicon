@@ -28,7 +28,7 @@ Before converting our project into a package,
 we will explore what a package should contain.
 
 -   The text file `DESCRIPTION` (with no suffix) holds most of the package's metadata,
-    including a description of what it,
+    including a description of what it does,
     who wrote it,
     and what other packages it requires to run.
     We will edit its contents as we go along.
@@ -193,7 +193,7 @@ let's edit `DESCRIPTION` and:
 
 1.  change the `Title`, `Author`, `Maintainer`, and `Description`;
 2.  change the `License` to [`MIT`][mit-license] (see [Choose a License][choose-a-license] for other options); and
-3.  go to the `Build` tab in RStudio and run 'Check` to see if our package meets CRAN's standards.
+3.  go to the `Build` tab in RStudio and run `Check` to see if our package meets CRAN's standards.
 
 A note on this:
 [CRAN][cran] is the Comprehensive R Archive Network.
