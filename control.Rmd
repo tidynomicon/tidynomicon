@@ -93,7 +93,7 @@ for (i in seq_along(colors)) {
 
 This output makes no sense until we remember that every value is a vector,
 and that `length` returns the length of a vector,
-so that `length(colors[0])` is telling us that `colors[0]` contains one element.
+so that `length(colors[1])` is telling us that `colors[1]` contains one element.
 If we want the number of characters in the strings,
 we can use R's built-in `nchar` or the more modern function `stringr::str_length`:
 
