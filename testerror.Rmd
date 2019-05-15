@@ -144,7 +144,7 @@ and other [unit testing](glossary.html#unit-test) libraries:
 
 Let's load it and write our first test:
 
-```{r introduce-testthat}
+```{r introduce-testthat, message = FALSE}
 library(testthat)
 
 test_that("Zero equals itself", {expect_equal(0, 0)})
