@@ -223,7 +223,7 @@
 
 **Relative row number**<a id="relative-row-number"></a>
 :   the index of a row in a displayed portion of a table,
-    which may or may not be the same as the [absolut row number](glossary.html#absolute-row-number)
+    which may or may not be the same as the [absolute row number](glossary.html#absolute-row-number)
     within the table.
 
 **S3**<a id="S3"></a>

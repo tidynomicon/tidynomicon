@@ -528,7 +528,7 @@ but it's going to take a bit of work.
 > ```
 >
 > What I did wrong was use `[` instead of `[[`,
-> which meant that `conditions[1]` was not an expression---it wa a list containing a single expression.
+> which meant that `conditions[1]` was not an expression---it was a list containing a single expression.
 > It turns out that evaluating a list containing an expression produces a list of expressions rather than an error,
 > which is so helpful that it only took me an hour to figure out my mistake.
 
@@ -724,7 +724,7 @@ Delayed evaluation and quoting are confusing for two reasons:
     It's rather like learning to drive an automatic transmission and then switching to a manual one---all of a sudden
     you have to worry about a gear shift and a clutch.
 2.  R's built-in tools don't behave as consistently as they could,
-    and the functions provided by the tidverse as alternatives use variations on a small number of names:
+    and the functions provided by the tidyverse as alternatives use variations on a small number of names:
     `quo`, `quote`, and `enquo` might all appear on the same page.
 
 If you would like to know more,
