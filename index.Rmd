@@ -55,7 +55,7 @@ Andrzej
     and has worked since then for a small consulting company.
     He learned Python by doing data science courses online,
     but has no formal training in programming.
-    He just joined team that primarily uses RMarkdown;
+    He just joined a team that primarily uses RMarkdown;
     these lessons will show him how to translate his understanding of Python to R.
 
 Padma

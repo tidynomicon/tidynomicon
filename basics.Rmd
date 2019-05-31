@@ -169,7 +169,7 @@ Like Python,
 R does not display a value after an assignment statement,
 so we have to ask it to show us the value.
 
-Now that we can create vector in R,
+Now that we can create a vector in R,
 we can explain that errant `[1]` in our previous examples.
 To begin with,
 let's have a look at the lengths of various things in Python:
@@ -220,7 +220,7 @@ c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 
-In order to help us find out way in our data,
+In order to help us find out a way in our data,
 R automatically breaks long lines
 and displays the starting index of each line.
 These indices also show us that R counts from 1 as humans do,
@@ -342,7 +342,7 @@ character(3)
 ```
 
 Ah---it appears that `character(N)` constructs a vector of empty strings of the specified length.
-The expression `character(0)` presumably therefore means
+The expression `character(0)` presumably, therefore, means
 "an [empty vector](glossary.html#empty-vector) of type character".
 From this,
 we conclude that the index 0 doesn't correspond to any elements,
