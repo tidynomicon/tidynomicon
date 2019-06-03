@@ -220,7 +220,7 @@ c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 ```
 
-In order to help us find out a way in our data,
+In order to help us find our way in our data,
 R automatically breaks long lines
 and displays the starting index of each line.
 These indices also show us that R counts from 1 as humans do,
@@ -342,7 +342,7 @@ character(3)
 ```
 
 Ah---it appears that `character(N)` constructs a vector of empty strings of the specified length.
-The expression `character(0)` presumably, therefore, means
+Therefore, The expression `character(0)` presumably means
 "an [empty vector](glossary.html#empty-vector) of type character".
 From this,
 we conclude that the index 0 doesn't correspond to any elements,

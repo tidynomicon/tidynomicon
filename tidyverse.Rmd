@@ -15,7 +15,7 @@ source("etc/common.R")
 There is no point in becoming fluent in Enochian if you do not then call forth a Dweller Beneath at the time of the new moon.
 Similarly,
 there is no point learning a language designed for data manipulation if you do not then bend data to your will.
-This chapter, therefore, looks at how to do the things that R was summoned---er, designed---to do.
+This chapter therefore looks at how to do the things that R was summoned---er, designed---to do.
 
 ## How do I read data?
 
