@@ -277,7 +277,7 @@ This is now a plain old vector, so it can be indexed with [single square bracket
 infant_hiv[[1]][1]
 ```
 
-But that too is a vector, so it can of course be indexed as well (for some value of "of course"):
+But that too is a vector, so it can, of course, be indexed as well (for some value of "of course"):
 
 ```{r double-single-single}
 infant_hiv[[1]][1][1]
@@ -651,7 +651,7 @@ One of R's greatest strengths is the tools it gives us for seeing the hitherto u
 The most popular of these tools is `ggplot2`,
 which implements and extends the patterns described in @Wilk2005.
 Every chart it creates has a [geometry](glossary.html#geometry) that controls how data is displayed,
-and an [mapping](glossary.html#mapping) that controls how values are mapped to geometric properties.
+and a [mapping](glossary.html#mapping) that controls how values are mapped to geometric properties.
 For example,
 these lines of code create a scatter plot showing the relationship between `lo` and `hi` values in the infant HIV data:
 

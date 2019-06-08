@@ -63,7 +63,7 @@ we will explore what a package should contain.
     to extract them and format them as required.
 -   The `tests` directory holds the package's unit tests.
     It should contain files with names like <code>test_<em>some_feature</em>.R</code>,
-    which should in turn contain functions named <code>test_<em>something_specific</em></code>.
+    which should, in turn, contain functions named <code>test_<em>something_specific</em></code>.
     We'll have a closer look at these later.
 
 In order to understand the rest of what follows,
@@ -439,7 +439,7 @@ What is this `.data` that we have invoked?
 Typing `?rlang::.data` gives us the answer:
 it is a pronoun that allows us to be explicit when we refer to an object inside the data.
 Adding this---i.e.,
-being explicity that `country` is a column of `.data` rather than an undefined variable---finally
+being explicit that `country` is a column of `.data` rather than an undefined variable---finally
 (finally)
 gives us a clean build.
 
