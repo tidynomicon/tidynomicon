@@ -1,5 +1,16 @@
+*.aux
+*.bbl
+*.blg
+*.idx
+*.knit.md
 *.log
+*.maf
+*.mtc
+*.mtc0
 *.rds
+*.tbc
+*.toc
+*.utf8.md
 *~
 .DS_Store
 .Rhistory
@@ -11,7 +22,6 @@ _book
 _bookdown_files
 docs/*.md
 figures/tidynomicon
+main.pdf
 tidynomicon.Rmd
 tidynomicon.tex
-*.knit.md
-*.utf8.md

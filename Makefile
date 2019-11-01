@@ -6,10 +6,10 @@ FIXED=CITATION.md CONDUCT.md CONTRIBUTING.md LICENSE.md README.md
 TEMP=$(patsubst %.Rmd,%.md,$(wildcard *.Rmd))
 SRC=${CONFIG} ${FIXED} $(wildcard *.Rmd)
 OUT=_book
-EPUB=${OUT}/${STEM}.epub
 HTML=${OUT}/index.html
 PDF=${OUT}/${STEM}.pdf
 DATABASE=data/example.db
+OVERLEAF=main.pdf
 
 all : commands
 
@@ -20,7 +20,7 @@ commands :
 	@grep -h -E '^##' ${MAKEFILE_LIST} | sed -e 's/## //g'
 
 ## everything   : rebuild all versions.
-everything : ${HTML} ${PDF} ${EPUB}
+everything : ${HTML} ${PDF}
 
 ## html         : build HTML version.
 html : ${HTML}
@@ -28,8 +28,12 @@ html : ${HTML}
 ## pdf          : build PDF version.
 pdf : ${PDF}
 
-## epub         : build epub version.
-epub : ${EPUB}
+## overleaf     : build No Starch/Overleaf version.
+overleaf : ${OVERLEAF}
+	xelatex main
+	bibtex main
+	xelatex main
+	xelatex main
 
 #-------------------------------------------------------------------------------
 
@@ -39,15 +43,13 @@ ${HTML} : ${SRC}
 ${PDF} : ${SRC}
 	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book'); warnings()"
 
-${EPUB} : ${SRC}
-	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::epub_book'); warnings()"
-
 #-------------------------------------------------------------------------------
 
 ## clean        : clean up generated files.
 clean :
 	@rm -rf ${OUT} ${STEM}.Rmd ${TEMP} *.utf8.md *.knit.md
 	@find . -name '*~' -exec rm {} \;
+	@rm -f *.aux *.bbl *.blg *.idx *.log *.maf *.mtc *.mtc0 *.rds *.tbc *.toc
 
 ## check        : internal checks.
 check :
@@ -71,6 +73,6 @@ settings :
 	@echo FIXED ${FIXED}
 	@echo SRC ${SRC}
 	@echo TEMP ${TEMP}
-	@echo EPUB ${EPUB}
 	@echo HTML ${HTML}
 	@echo PDF ${PDF}
+	@echo OVERLEAF ${OVERLEAF}
