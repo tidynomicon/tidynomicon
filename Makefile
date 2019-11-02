@@ -9,7 +9,7 @@ OUT=_book
 HTML=${OUT}/index.html
 PDF=${OUT}/${STEM}.pdf
 DATABASE=data/example.db
-OVERLEAF=main.pdf
+OVERLEAF=nostarch.pdf
 
 all : commands
 
@@ -28,12 +28,12 @@ html : ${HTML}
 ## pdf          : build PDF version.
 pdf : ${PDF}
 
-## overleaf     : build No Starch/Overleaf version.
-overleaf : ${OVERLEAF}
-	xelatex main
-	bibtex main
-	xelatex main
-	xelatex main
+## nostarch.pdf : build No Starch/Overleaf version.
+nostarch.pdf : nostarch.tex book.bib
+	xelatex nostarch
+	bibtex nostarch
+	xelatex nostarch
+	xelatex nostarch
 
 #-------------------------------------------------------------------------------
 

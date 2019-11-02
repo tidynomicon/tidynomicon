@@ -23,5 +23,5 @@ _bookdown_files
 docs/*.md
 figures/tidynomicon
 main.pdf
+nostarch.pdf
 tidynomicon.Rmd
-tidynomicon.tex

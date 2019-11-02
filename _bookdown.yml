@@ -3,7 +3,7 @@ language:
   ui:
     chapter_name: "Chapter "
 output_dir: "docs"
-delete_merged_file: true
+delete_merged_file: false
 new_session: true
 rmd_files:
   - index.Rmd
