@@ -3,12 +3,11 @@ title: "The Tidynomicon"
 author: "Greg Wilson"
 bibliography: book.bib
 description: The Tidynomicon
-documentclass: book
+documentclass: nostarch
+biblio-style: plainnat
 github-repo: gvwilson/tidynomicon
 link-citations: yes
 site: bookdown::bookdown_site
-subtitle: A Brief Introduction to R for People Who Count From Zero
-biblio-style: apalike
 ---
 
 # Introduction

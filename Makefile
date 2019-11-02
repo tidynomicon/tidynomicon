@@ -13,6 +13,8 @@ OVERLEAF=nostarch.pdf
 
 all : commands
 
+# https://github.com/rstudio/bookdown-demo/commit/28d27e81fffe66a8dc0a6b70ffc7ab8cd6af8533
+
 #-------------------------------------------------------------------------------
 
 ## commands     : show all commands.
@@ -41,6 +43,7 @@ ${HTML} : ${SRC}
 	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook'); warnings()"
 
 ${PDF} : ${SRC}
+	rm -f tidynomicon.md
 	Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book'); warnings()"
 
 #-------------------------------------------------------------------------------

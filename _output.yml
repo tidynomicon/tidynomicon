@@ -16,5 +16,6 @@ bookdown::pdf_book:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
+  template: null
   keep_tex: yes
 bookdown::epub_book: default
