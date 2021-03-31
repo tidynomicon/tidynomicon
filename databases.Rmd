@@ -169,6 +169,7 @@ num_char %>%
 
 - Note that the same workflow exists for Spark and data.table as backends
 - Do we want to show examples or not? I remember concern about not everyone being able to run Spark on their machine
+- Enables highly scalable workflows like doing `pointblank` validation against full data tables
 
 ## Key Points
 
