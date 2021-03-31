@@ -1,0 +1,176 @@
+# Working with Databases {#databases}
+
+```{r setup, include=FALSE}
+source("etc/common.R")
+```
+
+TODO
+
+## Learning Objectives
+
+- Connect to a database with the `DBI` package
+- Write data to a database from R
+- Send SQL queries to a database from R and return results
+- Understand how `dbplyr` can help scale `dplyr` code by translating it to SQL
+- Create references to remote database tables with the `tbl()` function
+- Retrieve `dbplyr` results as an R data.frame
+- Name other options for remote `dplyr` backends
+
+## How do I connect to a database?
+
+- Intro DBI package
+  + DBI provides a unified R interface across countless databases
+  + connections, query execution, extraction, etc. 
+- Show basic connection (will use SQLite for examples)
+
+```{r}
+library(DBI)
+con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+```
+
+- Provide example of more advanced connection to show custom arguments by driver (e.g. with credentials like BigQuery)
+
+```{r eval = FALSE}
+con <- dbConnect(odbc(),
+                 Driver         = "Simba ODBC Driver for Google BigQuery",
+                 Catalog        = "my-bigquery-project",
+                 Email          = "emilyriederer@gmail.com",
+                 KeyFilePath    = "keyfile.json",
+                 OAuthMechanism = 0)
+```
+
+
+## How do I write data to a database?
+
+- Note that this is mostly for sake of example; not intended for production workload
+- Will change data to something more meaningful
+
+```{r echo = FALSE}
+l <- letters[1:10]
+tbl1 <- data.frame(cd = l, n = 1:10)
+tbl2 <- data.frame(cd = l, cat = toupper(l))
+```
+
+- Use `dbWriteTable` to send data to database
+
+```{r}
+dbWriteTable(con, "num_char", tbl1)
+dbWriteTable(con, "char_char", tbl2)
+```
+
+- Can confirm results with `dbListTables`
+
+```{r}
+dbListTables(con)
+```
+
+## How do I query data from a database with SQL?
+
+- Retrieve results with `dbGetQuery`
+
+```{r}
+query <- "
+  select num_char.cd, n, cat
+  from 
+    num_char 
+    left join 
+    char_char 
+    on num_char.cd = char_char.cd"
+df_from_db <- dbGetQuery(con, query)
+head(df_from_db)
+```
+
+- It may be cleaner to leave your query in a separate file
+
+```{r echo = FALSE}
+query <- paste(readLines("query.sql"), collapse = "\n")
+dbGetQuery(con, query)
+```
+
+- Note (but don't demonstrate?) more advanced features exist like:
+  + `dbSendQuery()`-`dbFetch()` workflow to not pull down data all at once
+  + `dbSendStatement()` for arbitary SQL like defining local vars (database dependent)
+  + See good examples in `DBI` docs (is this enough to say?)
+
+## How can I use a database to scale my R code? 
+
+- Beyond using R to send SQL queries, you can automatically translate native `tidyverse` code to SQL using `dbplyr`. This means you can easily scale your pre-existing code by running it in the database instead of in R
+
+## How do I reference database tables using `dbplyr`?
+
+- Can connect to tables with the `tbl()` function and the `con` DBI object
+
+```{r}
+library(dbplyr)
+num_char <- tbl(con, "num_char")
+char_char <- tbl(con, "char_char")
+```
+
+## How does `dbplyr` work?
+
+- `dbplyr` knows how to translate all `dplyr` functions into SQL. We can see this happen for ourselves by piping the output of tidyverse code into the `show_query()` function. It is this query that is executed against the database
+
+```{r}
+num_char %>%
+  filter(n < 5) %>%
+  show_query()
+```
+
+This also works with more complex queries. (Note that this is not intended to make the most readable SQL)
+
+```{r}
+num_char %>%
+  left_join(char_char, by = "cd") %>%
+  filter(n < 5) %>%
+  mutate(m = n + 10) %>%
+  show_query()
+```
+
+- In the spirit of lazy evaluation, queries are not executed until we request results (implicitly or with `collect()`)
+
+```{r}
+df_results <- 
+  num_char %>%
+  filter(n < 5)
+
+class(df_results) # not a data.frame
+class(collect(df_results)) # is a data.frame
+head(df_results) # implicitly collected
+```
+
+## When might `dbplyr` translation break down?
+
+`dbplyr` has a rich set of R functions that it knows how to translate to SQL.
+
+```{r}
+num_char %>%
+  mutate(n_sqrt = sqrt(n)) %>%
+  show_query()
+```
+
+It will also allow you to pass through non-R functions that you know are defined in the SQL flavor used by your database.
+
+```{r}
+num_char %>%
+  mutate(n_modified = my_database_knows_this_function(n)) %>%
+  show_query()
+```
+
+However, it cannot translate any arbitrary R function. For example, it tries to send `my_fun()` (defined in R) to the database, and the database will not know what this means. 
+```{r}
+my_fun <- function(x) x+1
+
+num_char %>%
+  mutate(n_modified = my_fun(n)) %>%
+  show_query()
+```
+
+## What other backends exists?
+
+- Note that the same workflow exists for Spark and data.table as backends
+- Do we want to show examples or not? I remember concern about not everyone being able to run Spark on their machine
+
+## Key Points
+
+```{r links, child="etc/links.md"}
+```
